@@ -130,54 +130,95 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
       </div>
 
       {/* Dialogs for full details */}
+      {/* Style for conduct and ethics lists */}
+      <style>{`
+        .conduct-main-list {
+          counter-reset: main;
+        }
+        .conduct-main-list > li {
+          counter-increment: main;
+          padding-top: 1.5em;
+          padding-bottom: 1.5em;
+        }
+        .conduct-main-list > li > .conduct-sub-list {
+          counter-reset: sub;
+        }
+        .conduct-main-list > li > .conduct-sub-list > li {
+          counter-increment: sub;
+          list-style: none;
+          position: relative;
+          margin-bottom: 1.2em;
+          margin-top: 1.2em;
+        }
+        .conduct-main-list > li > .conduct-sub-list > li:before {
+          content: counter(main) "." counter(sub) " ";
+          font-weight: normal;
+          position: absolute;
+          left: -4em;
+          width: 4em;
+          text-align: right;
+          padding-right: 1em;
+        }
+        .conduct-main-list > li > .conduct-heading {
+          display: flex;
+          align-items: center;
+          font-weight: bold;
+          font-size: 1.1em;
+          margin-bottom: 0.75em;
+        }
+        .conduct-main-list > li > .conduct-heading:before {
+          content: counter(main) ". ";
+          font-weight: bold;
+          margin-right: 0.5em;
+          font-size: 1.1em;
+        }
+        .ethics-main-list {
+          counter-reset: main;
+        }
+        .ethics-main-list > li {
+          counter-increment: main;
+          padding-top: 1.5em;
+          padding-bottom: 1.5em;
+        }
+        .ethics-main-list > li > .ethics-sub-list {
+          counter-reset: sub;
+        }
+        .ethics-main-list > li > .ethics-sub-list > li {
+          counter-increment: sub;
+          list-style: none;
+          position: relative;
+          margin-bottom: 1.2em;
+          margin-top: 1.2em;
+        }
+        .ethics-main-list > li > .ethics-sub-list > li:before {
+          content: counter(main) "." counter(sub) " ";
+          font-weight: normal;
+          position: absolute;
+          left: -4em;
+          width: 4em;
+          text-align: right;
+          padding-right: 1em;
+        }
+        .ethics-main-list > li > .ethics-heading {
+          display: flex;
+          align-items: center;
+          font-weight: bold;
+          font-size: 1.1em;
+          margin-bottom: 0.75em;
+        }
+        .ethics-main-list > li > .ethics-heading:before {
+          content: counter(main) ". ";
+          font-weight: bold;
+          margin-right: 0.5em;
+          font-size: 1.1em;
+        }
+      `}</style>
       <Dialog open={openDialog === "codeOfConduct"} onOpenChange={closeDialog}>
-        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="w-full sm:max-w-3xl h-[100vh] sm:max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>NAR India Code of Conduct</DialogTitle>
             <DialogDescription>Please read the complete Code of Conduct below</DialogDescription>
           </DialogHeader>
-          <style>{`
-            .conduct-main-list {
-              counter-reset: main;
-            }
-            .conduct-main-list > li {
-              counter-increment: main;
-              padding-top: 1.5em;
-              padding-bottom: 1.5em;
-            }
-            .conduct-main-list > li > .conduct-sub-list {
-              counter-reset: sub;
-            }
-            .conduct-main-list > li > .conduct-sub-list > li {
-              counter-increment: sub;
-              list-style: none;
-              position: relative;
-              margin-bottom: 1.2em;
-              margin-top: 1.2em;
-            }
-            .conduct-main-list > li > .conduct-sub-list > li:before {
-              content: counter(main) "." counter(sub) " ";
-              font-weight: normal;
-              position: absolute;
-              left: -4em;
-              width: 4em;
-              text-align: right;
-              padding-right: 1em;
-            }
-            .conduct-main-list > li > .conduct-heading {
-              display: flex;
-              align-items: center;
-              font-weight: bold;
-              font-size: 1.1em;
-              margin-bottom: 0.75em;
-            }
-            .conduct-main-list > li > .conduct-heading:before {
-              content: counter(main) ". ";
-              font-weight: bold;
-              margin-right: 0.5em;
-              font-size: 1.1em;
-            }
-          `}</style>
           <div className="space-y-4 text-sm">
             <p className="mb-4 font-medium">Acknowledgment and Commitment to<br/>The Code of Conduct</p>
             <p className="mb-4">As a member of the National Association of Realtors India, I/We hereby acknowledge receipt and understanding of the Code of Ethics for the Governing Board and Leadership. I/We affirm my/our commitment to uphold these ethical standards, ensuring the highest level of integrity, transparency, and accountability in our actions and decisions. By signing this document, I/We pledge to:</p>
@@ -328,53 +369,11 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
       </Dialog>
 
       <Dialog open={openDialog === "codeOfEthics"} onOpenChange={closeDialog}>
-        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="w-full sm:max-w-3xl h-[100vh] sm:max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>NAR India Code of Ethics</DialogTitle>
             <DialogDescription>Please read the complete Code of Ethics below</DialogDescription>
           </DialogHeader>
-          <style>{`
-            .ethics-main-list {
-              counter-reset: main;
-            }
-            .ethics-main-list > li {
-              counter-increment: main;
-              padding-top: 1.5em;
-              padding-bottom: 1.5em;
-            }
-            .ethics-main-list > li > .ethics-sub-list {
-              counter-reset: sub;
-            }
-            .ethics-main-list > li > .ethics-sub-list > li {
-              counter-increment: sub;
-              list-style: none;
-              position: relative;
-              margin-bottom: 1.2em;
-              margin-top: 1.2em;
-            }
-            .ethics-main-list > li > .ethics-sub-list > li:before {
-              content: counter(main) "." counter(sub) " ";
-              font-weight: normal;
-              position: absolute;
-              left: -4em;
-              width: 4em;
-              text-align: right;
-              padding-right: 1em;
-            }
-            .ethics-main-list > li > .ethics-heading {
-              display: flex;
-              align-items: center;
-              font-weight: bold;
-              font-size: 1.1em;
-              margin-bottom: 0.75em;
-            }
-            .ethics-main-list > li > .ethics-heading:before {
-              content: counter(main) ". ";
-              font-weight: bold;
-              margin-right: 0.5em;
-              font-size: 1.1em;
-            }
-          `}</style>
           <div className="space-y-4 text-sm">
             <ol className="ethics-main-list ml-6">
               <li>
@@ -605,7 +604,7 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
       </Dialog>
 
       <Dialog open={openDialog === "termsAndConditions"} onOpenChange={closeDialog}>
-        <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="w-full sm:max-w-3xl h-[100vh] sm:max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>NAR India Terms and Conditions</DialogTitle>
             <DialogDescription>Please read the complete Terms and Conditions below</DialogDescription>

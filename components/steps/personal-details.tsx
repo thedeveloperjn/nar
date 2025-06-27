@@ -118,9 +118,15 @@ export function PersonalDetails({ formData, updateFormData }: PersonalDetailsPro
   }, [updateFormData])
 
   const handleSelectChange = useCallback((name: string, value: string) => {
-    updateFormData({ [name]: value })
-    // Clear otherCity if not selecting "other"
-    if (name === 'city' && value !== 'other') {
+    console.log('City select value:', value);
+    // Always set 'OTHER' (all caps) if user selects the 'OTHER' option
+    if (name === 'city' && (value === 'other' || value === 'OTHER')) {
+      updateFormData({ city: 'OTHER' })
+    } else {
+      updateFormData({ [name]: value })
+    }
+    // Clear otherCity if not selecting 'OTHER'
+    if (name === 'city' && value !== 'other' && value !== 'OTHER') {
       updateFormData({ otherCity: '' })
     }
   }, [updateFormData])

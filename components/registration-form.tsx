@@ -141,11 +141,11 @@ export function RegistrationForm() {
           });
         }
 
-        // Append city: if 'other' or 'OTHER', send null, else send city ID
-        if (formData.city === 'other' || formData.city === 'OTHER') {
+        // Append city: if 'other' or 'OTHER', send 'OTHER', else send city ID
+        if (sanitizedData.city === 'OTHER') {
           formDataToSend.append('city', 'OTHER');
         } else {
-          formDataToSend.append('city', formData.city);
+          formDataToSend.append('city', sanitizedData.city);
         }
 
         // Append files with correct backend keys
