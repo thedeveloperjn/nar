@@ -1,7 +1,6 @@
 "use client"
 
-import type React from "react"
-
+import { useCallback } from "react"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -12,94 +11,107 @@ interface FormalInformationProps {
 }
 
 export function FormalInformation({ formData, updateFormData }: FormalInformationProps) {
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     updateFormData({ [name]: value })
-  }
+  }, [updateFormData])
 
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-gray-900">Formal Information</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Company Name */}
         <div className="space-y-2">
-          <Label htmlFor="companyName">Company Name</Label>
+          <Label htmlFor="company_name">Company Name *</Label>
           <Input
-            id="companyName"
-            name="companyName"
-            value={formData.companyName}
+            id="company_name"
+            name="company_name"
+            value={formData.company_name}
             onChange={handleInputChange}
             placeholder="Enter your company name"
+            required
           />
         </div>
 
+        {/* Designation */}
         <div className="space-y-2">
-          <Label htmlFor="designation">Designation In Company</Label>
+          <Label htmlFor="company_designation">Designation In Company *</Label>
           <Input
-            id="designation"
-            name="designation"
-            value={formData.designation}
+            id="company_designation"
+            name="company_designation"
+            value={formData.company_designation}
             onChange={handleInputChange}
             placeholder="Enter your designation"
+            required
           />
         </div>
 
+        {/* Company Website */}
         <div className="space-y-2">
-          <Label htmlFor="companyWebsite">Company Website</Label>
+          <Label htmlFor="company_website">Company Website</Label>
           <Input
-            id="companyWebsite"
-            name="companyWebsite"
+            id="company_website"
+            name="company_website"
             type="url"
-            value={formData.companyWebsite}
+            value={formData.company_website}
             onChange={handleInputChange}
             placeholder="Enter your company website"
           />
         </div>
 
+        {/* Company Email */}
         <div className="space-y-2">
-          <Label htmlFor="companyEmail">Company Email Id</Label>
+          <Label htmlFor="company_email">Company Email Id *</Label>
           <Input
-            id="companyEmail"
-            name="companyEmail"
+            id="company_email"
+            name="company_email"
             type="email"
-            value={formData.companyEmail}
+            value={formData.company_email}
             onChange={handleInputChange}
             placeholder="Enter your company email"
+            required
           />
         </div>
 
+        {/* RERA No */}
         <div className="space-y-2">
-          <Label htmlFor="reraNo">RERA No.</Label>
+          <Label htmlFor="rera_no">RERA No. *</Label>
           <Input
-            id="reraNo"
-            name="reraNo"
-            value={formData.reraNo}
+            id="rera_no"
+            name="rera_no"
+            value={formData.rera_no}
             onChange={handleInputChange}
             placeholder="Enter your RERA number"
+            required
           />
         </div>
 
+        {/* GST No */}
         <div className="space-y-2">
-          <Label htmlFor="gstNo">GST No.</Label>
+          <Label htmlFor="gst_no">GST No. *</Label>
           <Input
-            id="gstNo"
-            name="gstNo"
-            value={formData.gstNo}
+            id="gst_no"
+            name="gst_no"
+            value={formData.gst_no}
             onChange={handleInputChange}
             placeholder="Enter your GST number"
+            required
           />
         </div>
       </div>
 
+      {/* Company Address */}
       <div className="space-y-2">
-        <Label htmlFor="companyAddress">Company Address</Label>
+        <Label htmlFor="company_address">Company Address *</Label>
         <Textarea
-          id="companyAddress"
-          name="companyAddress"
-          value={formData.companyAddress}
+          id="company_address"
+          name="company_address"
+          value={formData.company_address}
           onChange={handleInputChange}
           placeholder="Enter your company address"
           className="min-h-[100px]"
+          required
         />
       </div>
     </div>

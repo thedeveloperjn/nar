@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
@@ -15,17 +15,17 @@ interface ChecklistProps {
 export function Checklist({ formData, updateFormData }: ChecklistProps) {
   const [openDialog, setOpenDialog] = useState<string | null>(null)
 
-  const handleCheckChange = (field: string, checked: boolean) => {
+  const handleCheckChange = useCallback((field: string, checked: boolean) => {
     updateFormData({ [field]: checked })
-  }
+  }, [updateFormData])
 
-  const openDetails = (type: string) => {
+  const openDetails = useCallback((type: string) => {
     setOpenDialog(type)
-  }
+  }, [])
 
-  const closeDialog = () => {
+  const closeDialog = useCallback(() => {
     setOpenDialog(null)
-  }
+  }, [])
 
   return (
     <div className="space-y-6">
@@ -33,6 +33,7 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
       <p className="text-gray-600">Please review and accept the following before submission</p>
 
       <div className="space-y-4 border rounded-md p-4 bg-gray-50">
+        {/* Code of Conduct */}
         <div className="flex items-start space-x-3">
           <Checkbox
             id="codeOfConduct"
@@ -43,7 +44,7 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
           <div className="space-y-1 flex-1">
             <div className="flex items-center">
               <Label htmlFor="codeOfConduct" className="font-medium">
-                CODE OF CONDUCT
+                CODE OF CONDUCT *
               </Label>
               <Button
                 type="button"
@@ -56,12 +57,12 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
               </Button>
             </div>
             <p className="text-sm text-gray-500">
-              I agree to abide by the NAR India Code of Conduct and uphold the highest standards of professional
-              behavior.
+              I agree to abide by the NAR India Code of Conduct and uphold the highest standards of professional behavior.
             </p>
           </div>
         </div>
 
+        {/* Code of Ethics */}
         <div className="flex items-start space-x-3">
           <Checkbox
             id="codeOfEthics"
@@ -72,7 +73,7 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
           <div className="space-y-1 flex-1">
             <div className="flex items-center">
               <Label htmlFor="codeOfEthics" className="font-medium">
-                CODE OF ETHICS
+                CODE OF ETHICS *
               </Label>
               <Button
                 type="button"
@@ -90,6 +91,7 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
           </div>
         </div>
 
+        {/* Terms and Conditions */}
         <div className="flex items-start space-x-3">
           <Checkbox
             id="termsAndConditions"
@@ -100,7 +102,7 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
           <div className="space-y-1 flex-1">
             <div className="flex items-center">
               <Label htmlFor="termsAndConditions" className="font-medium">
-                TERMS AND CONDITIONS
+                TERMS AND CONDITIONS *
               </Label>
               <Button
                 type="button"
@@ -119,10 +121,11 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
         </div>
       </div>
 
+      {/* Note */}
       <div className="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-md">
         <p className="text-sm text-yellow-800">
           <strong>Note:</strong> NAR India will review your application. Once the review is complete, the team will get in touch with you via call or email for the next steps.
-          The applicable membership fee for your city is ₹10,000.
+          The applicable membership fee for your city is {formData.city === "OTHER" ? "₹5,000" : "₹10,000"}.
         </p>
       </div>
 
@@ -489,7 +492,7 @@ export function Checklist({ formData, updateFormData }: ChecklistProps) {
                   <li>Maintain transparency in advertising and promotional materials, avoiding exaggerated claims or representations.</li>
                   <li>Respect the legal rights of all parties in a transaction and ensure that all dealings are conducted lawfully.</li>
                   <li>Provide clients with a clear understanding of the terms and conditions of all agreements and contracts.</li>
-                  <li>Ensure that all commissions, fees, and financial arrangements are disclosed upfront and agreed upon in writing.</li>
+                  <li>Ensure that all commissions and fees are disclosed upfront and agreed upon in writing.</li>
                   <li>Provide fair access to property information and ensure that all potential buyers or tenants are treated equally.</li>
                   <li>Avoid practices that could unfairly exclude or discriminate against any party.</li>
                   <li>Ensure that all professional dealings are conducted in an open and honest manner.</li>

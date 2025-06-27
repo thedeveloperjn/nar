@@ -24,7 +24,7 @@ export function ThankYou({ formData }: ThankYouProps) {
           <h2 className="text-xl font-semibold text-blue-800">What's Next?</h2>
           <p className="mt-2 text-blue-700">
             Your registration has been submitted successfully. Our team will review your application and contact you
-            within 2-3 business days at {formData.email} or {formData.primaryContact}.
+            within 2-3 business days at {formData.email} or {formData.primaryprimary_contact_noContact}.
           </p>
         </div>
 
