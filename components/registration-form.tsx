@@ -47,6 +47,8 @@ export function RegistrationForm() {
     rera_no: "",
     gst_no: "",
     company_address: "",
+    industry: "",
+    profession: "",
 
     
       residential_primary_sales: false,

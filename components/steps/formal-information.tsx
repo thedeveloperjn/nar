@@ -23,27 +23,25 @@ export function FormalInformation({ formData, updateFormData }: FormalInformatio
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Company Name */}
         <div className="space-y-2">
-          <Label htmlFor="company_name">Company Name *</Label>
+          <Label htmlFor="company_name">Company Name</Label>
           <Input
             id="company_name"
             name="company_name"
             value={formData.company_name}
             onChange={handleInputChange}
             placeholder="Enter your company name"
-            required
           />
         </div>
 
         {/* Designation */}
         <div className="space-y-2">
-          <Label htmlFor="company_designation">Designation In Company *</Label>
+          <Label htmlFor="company_designation">Designation In Company</Label>
           <Input
             id="company_designation"
             name="company_designation"
             value={formData.company_designation}
             onChange={handleInputChange}
             placeholder="Enter your designation"
-            required
           />
         </div>
 
@@ -62,7 +60,7 @@ export function FormalInformation({ formData, updateFormData }: FormalInformatio
 
         {/* Company Email */}
         <div className="space-y-2">
-          <Label htmlFor="company_email">Company Email Id *</Label>
+          <Label htmlFor="company_email">Company Email Id</Label>
           <Input
             id="company_email"
             name="company_email"
@@ -70,40 +68,61 @@ export function FormalInformation({ formData, updateFormData }: FormalInformatio
             value={formData.company_email}
             onChange={handleInputChange}
             placeholder="Enter your company email"
-            required
           />
         </div>
 
         {/* RERA No */}
         <div className="space-y-2">
-          <Label htmlFor="rera_no">RERA No. *</Label>
+          <Label htmlFor="rera_no">RERA No.</Label>
           <Input
             id="rera_no"
             name="rera_no"
             value={formData.rera_no}
             onChange={handleInputChange}
             placeholder="Enter your RERA number"
-            required
           />
         </div>
 
         {/* GST No */}
         <div className="space-y-2">
-          <Label htmlFor="gst_no">GST No. *</Label>
+          <Label htmlFor="gst_no">GST No.</Label>
           <Input
             id="gst_no"
             name="gst_no"
             value={formData.gst_no}
             onChange={handleInputChange}
             placeholder="Enter your GST number"
-            required
+          />
+        </div>
+
+        {/* Industry */}
+        <div className="space-y-2">
+          <Label htmlFor="industry">Industry</Label>
+          <Input
+            id="industry"
+            name="industry"
+            value={formData.industry}
+            onChange={handleInputChange}
+            placeholder="Enter your industry"
+          />
+        </div>
+
+        {/* Profession */}
+        <div className="space-y-2">
+          <Label htmlFor="profession">Profession</Label>
+          <Input
+            id="profession"
+            name="profession"
+            value={formData.profession}
+            onChange={handleInputChange}
+            placeholder="Enter your profession"
           />
         </div>
       </div>
 
       {/* Company Address */}
       <div className="space-y-2">
-        <Label htmlFor="company_address">Company Address *</Label>
+        <Label htmlFor="company_address">Company Address</Label>
         <Textarea
           id="company_address"
           name="company_address"
@@ -111,7 +130,6 @@ export function FormalInformation({ formData, updateFormData }: FormalInformatio
           onChange={handleInputChange}
           placeholder="Enter your company address"
           className="min-h-[100px]"
-          required
         />
       </div>
     </div>

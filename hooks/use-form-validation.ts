@@ -16,14 +16,7 @@ export const useFormValidation = () => {
         }
         return null
         
-      case 1: // Formal Information
-        if (!formData.company_name?.trim()) return "Company name is required"
-        if (!formData.company_designation?.trim()) return "Designation is required"
-        if (!formData.company_email?.trim()) return "Company email is required"
-        if (!/^\S+@\S+\.\S+$/.test(formData.company_email)) return "Invalid company email format"
-        if (!formData.rera_no?.trim()) return "RERA number is required"
-        if (!formData.gst_no?.trim()) return "GST number is required"
-        return null
+    
         
       case 3: // Documents
         if (!formData.profile) return "Profile photo is required"

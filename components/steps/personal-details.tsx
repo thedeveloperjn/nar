@@ -219,10 +219,10 @@ export function PersonalDetails({ formData, updateFormData }: PersonalDetailsPro
             <SelectContent>
               {cities.map((city) => (
                 <SelectItem key={city._id} value={city._id}>
-                  {city.city_name}
+                  {city.city_name.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase())}
                 </SelectItem>
               ))}
-              <SelectItem value="OTHER">OTHER</SelectItem>
+              <SelectItem value="OTHER">Other</SelectItem>
             </SelectContent>
           </Select>
         </div>
